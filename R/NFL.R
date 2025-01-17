@@ -260,10 +260,10 @@ LEFT JOIN team_defense_final AS d ON o.team = d.team  # Join on team
 # Write the combined data to an Excel file
 write.xlsx(oline_SoS_rec_defense, "oline_SoS_rec_defense.xlsx")
 
-#=======================================================
+#============================================================
 # PART 3: CREATE DATA FRAME THAT HAS COMPLETION PERCENTAGE 
 # UNDER AND WITHOUT PRESSURE AND CALCULATE THE DIFFERENCE
-#=======================================================
+#============================================================
 
 # Filter for plays where the QB was under pressure (scrambled or hit) and attempting a pass
 pressure_comp_pct <- NFL_2024 %>%
@@ -297,8 +297,10 @@ pressure_nopress <- pressure_nopress %>%
 # Write the results to an Excel file
 write.xlsx(pressure_nopress, "pressure_nopress.xlsx")
 
-#====================================================
-
+#========================================================
+# PART 4: CALCULATE MEAN EPA PER WEEK FOR EACH PLAYOFF QB & 
+# GET THE OPPONENT THEY PLAYED THAT WEEK
+#========================================================
 
 # Filter and Prepare Quarterback EPA Data
 qb_epa <- NFL_2024 %>%
@@ -327,7 +329,12 @@ by.y = c("player_name", "week")          # Columns in opp
 qb_epa_opp <- sqldf("select * from qb_epa_opp where passer_player_name in (select player_name from player_stats)")
 
 # Write qb_epa_opp data to Excel
-write_xlsx(third_down_data, "third_down_data.xlsx")
+write_xlsx(qb_epa_opp, "qb_epa_opp.xlsx")
+
+#========================================================
+# PART 5: CALCULATE 3RD DOWN CONVERSION RATES BY YARDS TO 
+# GO FOR EACH PLAYOFF QB
+#========================================================
 
 third_down_data <- NFL_2024 %>%
   filter(season_type == "REG" & down == 3) %>% 
@@ -345,7 +352,6 @@ third_down_data <- NFL_2024 %>%
     total_attempts = n(),
     .groups = "drop" 
   )
-
 
 #Subset third down data for playoff QBs only 
 third_down_data <- sqldf("select * from third_down_data where passer_player_name in (select player_name from player_stats)")
