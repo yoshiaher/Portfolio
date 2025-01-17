@@ -4,6 +4,7 @@ install.packages(c("nflreadr", "dplyr", "stringr", "readxl", "writexl", "sqldf")
 # Load the necessary packages
 library(c("nflreadr", "dplyr", "stringr", "readxl", "writexl", "sqldf"))
 
+#Set working directory
 setwd("C:/Users/Yoshi Aher/Desktop/NFL")
 
 # Load NFL play by play data for the 2024 season
