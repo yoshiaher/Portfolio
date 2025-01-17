@@ -13,6 +13,11 @@ NFL_2024 <- load_pbp(2024)
 # Load player statistics for the 2024 season
 player_stats_2024 <- load_player_stats(2024)
 
+#=========================================================
+# PART 1: AGGREGATING INDIVIDUAL PLAYOFF QB STATS FOR THE 
+# SEASON
+#=========================================================
+
 # Filter for regular season quarterbacks with at least 10 games played
 player_stats <- player_stats_2024 %>%
   filter(season_type == "REG" & position == "QB") %>% 
@@ -42,11 +47,10 @@ player_stats <- player_stats_2024 %>%
   )
 
 
-# Creates a data frame named 'playoff_tms' containing a single column 'team' 
+# Create a data frame named 'playoff_tms' containing a single column 'team' 
 # with the names of 14 teams that qualified for the NFL playoffs. 
 playoff_tms_vector <- c("KC", "BUF", "BAL", "HOU", "LAC", "PIT", "DEN", "DET", "PHI", "TB", "LA", "MIN", "WAS", "GB")
 playoff_tms <- data.frame(team=playoff_tms_vector)
-
 
 #Subset player_stats for playoff QBs
 player_stats <- sqldf("select a.*, b.* from playoff_tms as a left join player_stats as b on a.team=b.recent_team")
@@ -57,8 +61,10 @@ player_stats <- player_stats %>%
 
 # Write thee player_stats dataframe to an Excel file
 write.xlsx(player_stats, "player_stats.xlsx")
-
-
+#==================================================================
+# PART 2: AGGREGATING AND RANKING TEAM LEVEL STATS FOR THE OFFENSIVE 
+# LINE, DEFENSE, SCHEDULE DIFFICULTY, AND RECEIVING CORE 
+#==================================================================
 # Load passing statistics for the 2024 season
 passing_2024 <- load_pfr_advstats(stat_type = 'pass', summary_level = 'season', seasons = 2024)
 
@@ -168,7 +174,6 @@ team_defense_final <- team_defense_final %>%
 # Write the final defensive stats to an Excel file
 write.xlsx(team_defense_final, "team_defense_final.xlsx")
 
-
 # Filter for regular season games and relevant receiver positions
 receiving_stats <- player_stats_2024 %>%
   filter(season_type == "REG" & position %in% c("WR", "TE")) %>%
@@ -225,6 +230,41 @@ team_receiving_stats <- receiving_stats %>%
 # Write the final receiving stats to an Excel file
 write.xlsx(team_receiving_stats, "team_receiving_stats.xlsx")
 
+#Read in Strength of Schedule Data
+SoS <- read.xlsx("Team Names and Schedule.xlsx")
+
+# Join schedule strength data with team abbreviations so abbr can be used to merge SoS with other team level data frames later. Filtering again for playoff teams only
+SoS <- sqldf("select a.rank as sched_rank, b.abbr as team from SoS as a left join team_abbr as b on a.Team=b.Name where b.abbr in (select team from player_stats)")
+
+# Assign playoff schedule rank based on descending strength of schedule rank
+SoS <- SoS %>%
+  mutate(
+    playoff_sched_rank = dense_rank(desc(sched_rank))
+  )
+
+# Join multiple dataframes to create a combined offensive line, schedule strength, receiving, and defense ranking table
+oline_SoS_rec_defense <- sqldf("
+SELECT
+  o.player,  # Player name (from oline_rank)
+  o.team,    # Team name (from oline_rank)
+  o.oline_rank AS oline_rank,  # Offensive line rank (from oline_rank)
+  s.playoff_sched_rank AS sos_rank,  # Playoff schedule rank (from SoS)
+  c.rec_rank AS receiving_rank,  # Receiving rank (from team_receiving_stats)
+  d.def_rank AS defense_rank  # Defensive rank (from team_defense_final)
+FROM oline_rank AS o
+LEFT JOIN SoS AS s ON o.team = s.team  # Join on team
+LEFT JOIN team_receiving_stats AS c ON o.team = c.recent_team  # Join on team
+LEFT JOIN team_defense_final AS d ON o.team = d.team  # Join on team
+")
+
+# Write the combined data to an Excel file
+write.xlsx(oline_SoS_rec_defense, "oline_SoS_rec_defense.xlsx")
+
+#=======================================================
+# PART 3: CREATE DATA FRAME THAT HAS COMPLETION PERCENTAGE 
+# UNDER AND WITHOUT PRESSURE AND CALCULATE THE DIFFERENCE
+#=======================================================
+
 # Filter for plays where the QB was under pressure (scrambled or hit) and attempting a pass
 pressure_comp_pct <- NFL_2024 %>%
   filter(season_type == "REG" & (qb_scramble == 1 | qb_hit == 1) & pass_attempt == 1) %>% 
@@ -257,34 +297,7 @@ pressure_nopress <- pressure_nopress %>%
 # Write the results to an Excel file
 write.xlsx(pressure_nopress, "pressure_nopress.xlsx")
 
-#Read in Strength of Schedule Data
-SoS <- read.xlsx("Team Names and Schedule.xlsx")
-
-# Join schedule strength data with team abbreviations so abbr can be used to merge SoS with other team level data frames later. Filtering again for playoff teams only
-SoS <- sqldf("select a.rank as sched_rank, b.abbr as team from SoS as a left join team_abbr as b on a.Team=b.Name where b.abbr in (select team from player_stats)")
-
-# Assign playoff schedule rank based on descending strength of schedule rank
-SoS <- SoS %>%
-  mutate(
-    playoff_sched_rank = dense_rank(desc(sched_rank))
-  )
-
-
-# Join multiple dataframes to create a combined offensive line, schedule strength, receiving, and defense ranking table
-
-oline_SoS_rec_defense <- sqldf("
-SELECT
-  o.player,  # Player name (from oline_rank)
-  o.team,    # Team name (from oline_rank)
-  o.oline_rank AS oline_rank,  # Offensive line rank (from oline_rank)
-  s.playoff_sched_rank AS sos_rank,  # Playoff schedule rank (from SoS)
-  c.rec_rank AS receiving_rank,  # Receiving rank (from team_receiving_stats)
-  d.def_rank AS defense_rank  # Defensive rank (from team_defense_final)
-FROM oline_rank AS o
-LEFT JOIN SoS AS s ON o.team = s.team  # Join on team
-LEFT JOIN team_receiving_stats AS c ON o.team = c.recent_team  # Join on team
-LEFT JOIN team_defense_final AS d ON o.team = d.team  # Join on team
-")
+#====================================================
 
 
 # Filter and Prepare Quarterback EPA Data
