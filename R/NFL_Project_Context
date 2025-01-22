@@ -3,11 +3,19 @@ good each quarterback is will refer to ESPN or NFL.com and look at their basic s
 
 One limitation is that these measures of performance are far more meaningful when looked at in conjunction with other critical context. For example, if Sam Darnold threw 
 36 touchdowns and Baker Mayfield threw 44 touchdowns, at first glance it wouldappear that Baker had the more impressive season according to this metric. However, if you add 
-context about each player's offensive line and find that Sam Darnold's offensiv eline was ranked far below Baker's, then you would realize there's a strong argument that Sam 
+context about each player's offensive line and find that Sam Darnold's offensive line was ranked far below Baker's, then you would realize there's a strong argument that Sam 
 in fact had a more impressive season despite having less touchdowns. 
 
-Another limitation is that many of these statistics are expressed as an aggregate or reflect a single time point. Neither of these data forms tells the whole story. If two 
-quarterbacks finish with 20 interceptions but one QB had no interceptions in the last 5 weeks and the other had 10 in the last five weeks, then the manner in which both QBs got 
-to 20 interceptions paints two different stories. This would not be discernible unless you were able to measure this metric over time. 
+Another limitation is that many of these statistics reflect a single time point which doesn't tell you the whole story. If Sam Darnold and Bakermayfield both finished with 20 
+interceptions but Baker Mayfield had no interceptions in the last 5 weeks and Sam Darnold had 10 in the last five weeks, then the manner in which both QBs got to 20 interceptions
+paints two different stories. This would not be discernible unless you were able to measure this metric over time. 
 
-Finally, 
+Lastly, many of these statistics are a high level representation of a QB's performance, but many strengths/weaknesses of a player can matereailize when looking at metrics with 
+a higher degree of granluarity. For example, many of these websites will provide third down conversion rates which is a good baseline measure of quarterback play in critical 
+moments. However, these metrics don't detail what the distance to go was which can drastically alter how you view a player. For example, if Sam Darnold and Baker Mayfield's 3rd 
+down conversaion rates were 40% and 35% respectively, you might be tempted to say Sam is better at third down conversions. However, if you could drill down into that statistic
+further and see that Sam is really good when its three or fewer yards but his success drops significantly beyond that while Baker maintains aroudn the same rate of conversion 
+at different distances, despite having an overall lower conversdion rate, the argument can be made that Baker Mayfield is better on third downs. 
+
+The nflverse package in R allowed me to work around all of these limitations. The datasets in that package have a variety of struictures: one record per play, one record per week, 
+one record per player, etc. 
