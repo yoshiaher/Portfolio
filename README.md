@@ -10,3 +10,9 @@ the genre of fantasy and thriller.
 I am confident that my data analytics skills and experience make me an ideal candidate for any data analyst role. I hope you find my portfolio to be informative and engaging, and I welcome any opportunity to discuss my qualifications further with you.
 
 Thank you for your time, I look forward to hearing from you soon.
+
+## Projects
+
+- [R Projects](R/) - Collection of R scripts and analyses.
+- [SQL Projects](SQL/) - SQL queries and data exploration projects.
+- [Tableau Dashboards](Tableau/) - Interactive dashboards and visualizations.
