@@ -1,5 +1,6 @@
-The goal of this project was to compare the regular season peformace of each of the fourteen quarterbacks who made the playoffs. Most fans looking to get a sense of how 
-good each quarterback is will refer to ESPN or NFL.com and look at their basic statistics. Although these measures are a good starting point, they have many limitations.
+With the NFL 2025 NFL playoffs right around the corner, NFL enthusiasts (myself included) are flocking to their favorite websites to see how the QBs heading into the playoffs 
+performed this season. Most fans looking to get a sense of how good each quarterback is will refer to ESPN or NFL.com and look at their basic statistics. Although these 
+measures are a good starting point, they have many limitations.
 
 One limitation is that these measures of performance are far more meaningful when looked at in conjunction with other critical context. For example, if Sam Darnold threw 
 36 touchdowns and Baker Mayfield threw 44 touchdowns, at first glance it wouldappear that Baker had the more impressive season according to this metric. However, if you add 
@@ -17,5 +18,15 @@ down conversaion rates were 40% and 35% respectively, you might be tempted to sa
 further and see that Sam is really good when its three or fewer yards but his success drops significantly beyond that while Baker maintains aroudn the same rate of conversion 
 at different distances, despite having an overall lower conversdion rate, the argument can be made that Baker Mayfield is better on third downs. 
 
-The nflverse package in R allowed me to work around all of these limitations. The datasets in that package have a variety of struictures: one record per play, one record per week, 
-one record per player, etc. 
+The goal of this project was to create a single source of reporting that would convey far richer insights about the regular season performance of QBs headed to the playoffs than
+anything that could be found via a simple Google search. The nflverse package in R has datasets stored in a variety of structures such as one record per play, one record per week, 
+one record per player, etc. that allowed me to work around all of the limitations described above. The specific objectives in this project were as follow: 
+
+        1. Aggregate Basic Stats such as Total Tocuhdowns, Interceptions, etc. and derive metrics to contexualize these statistics: Offensive Line Rank, Strength of Schedule, 
+           Defensive Rank, Receiving Core Rank
+        2. Plot Mean EPA over time and who the opponent that week was
+        3. Plot third down conversion rates at different distances
+        4. Measure completion percentage when pressured. 
+
+For the purpose of this analysis, I thought these objevtives were very thorough. They ensure that both basic and advanced metrics are used, both logitudinak and cross-sectional 
+data are used, and a variety of situations are covered such as clutch moments (third down conversion) or less than perfect conditions (completion percetnage unde pressure). 
