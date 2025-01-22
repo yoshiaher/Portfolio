@@ -1,19 +1,13 @@
-tivWhen this project idea was first conceived, Week 18 of the 2024 NFL season had just concluded and the playoff teams had been determined. I thought it would be both fun
-and educational to dive into the numbers and see how the players at the most impactful position (Quarterback) performed during the regular season and to get a sense of 
-where each QB stands relative to the other playoff QBs. 
-
-First, the scope of this project is limited to playoff teams only. 
-
-
 The goal of this project was to compare the regular season peformace of each of the fourteen quarterbacks who made the playoffs. Most fans looking to get a sense of how 
 good each quarterback is will refer to ESPN or NFL.com and look at their basic statistics. Although these measures are a good starting point, they have many limitations.
 
-One limitation is that these measures of performance are far more meaningful when looked at in conjunction with other critical context. For example, if Sam Darnold threw 36 touchdowns and Baker Mayfield threw 44 touchdowns, at first glance it would
-appear that Baker had the more impressive season according to this metric. However, if you add context about each player's offensive line and find that Sam Darnold's offensiv eline was 
-ranked far below Baker's, then you would realize there's a strong argument that Sam in fact had a more impressive season despite having less touchdowns. 
+One limitation is that these measures of performance are far more meaningful when looked at in conjunction with other critical context. For example, if Sam Darnold threw 
+36 touchdowns and Baker Mayfield threw 44 touchdowns, at first glance it wouldappear that Baker had the more impressive season according to this metric. However, if you add 
+context about each player's offensive line and find that Sam Darnold's offensiv eline was ranked far below Baker's, then you would realize there's a strong argument that Sam 
+in fact had a more impressive season despite having less touchdowns. 
 
-Another limitation is that many of these statistics are expressed as an aggregate or reflect a single time point. Neither of these data forms tells the whole story. If
-two quarterbacks finish with 20 interceptions but one QB had no interceptions in the last 5 weeks and the other had 10 in the last five weeks, then manner in which both 
-QBs got to 20 interceptions paints two different stories. Soemthing that would not be discernible unldess you were able to measure this metric over time. 
+Another limitation is that many of these statistics are expressed as an aggregate or reflect a single time point. Neither of these data forms tells the whole story. If two 
+quarterbacks finish with 20 interceptions but one QB had no interceptions in the last 5 weeks and the other had 10 in the last five weeks, then the manner in which both QBs got 
+to 20 interceptions paints two different stories. This would not be discernible unless you were able to measure this metric over time. 
 
 Finally, 
