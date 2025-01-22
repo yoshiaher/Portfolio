@@ -1,3 +1,5 @@
+-- NETFLIX DATA ANALYSIS USING SQL
+
 --Retrieve all distinct content types available on Netflix.
 SELECT DISTINCT CONTENT_TYPE AS UNIQUE_CONTENT FROM NETFLIX_; 
 
@@ -5,24 +7,24 @@ SELECT DISTINCT CONTENT_TYPE AS UNIQUE_CONTENT FROM NETFLIX_;
 SELECT CONTENT_TYPE, COUNT(*) AS CONTENT_TYPE_COUNT FROM NETFLIX_ GROUP BY 1; 
 
 --Find the top 5 countries with the most content available on Netflix.
-WITH CountryOccurrences AS (
+WITH COUNTRYOCCURRENCES AS (
     SELECT 
-        TRIM(unnest(string_to_array(country, ','))) AS country 
+        TRIM(UNNEST(STRING_TO_ARRAY(COUNTRY, ','))) AS COUNTRY 
     FROM 
-        netflix_
+        NETFLIX_
     WHERE 
-        country IS NOT NULL
+        COUNTRY IS NOT NULL
 )
 
     SELECT 
-        country, 
-        COUNT(*) AS content_count
+        COUNTRY, 
+        COUNT(*) AS CONTENT_COUNT
     FROM 
-        CountryOccurrences
+        COUNTRYOCCURRENCES
     GROUP BY 
-        country
+        COUNTRY
 	ORDER BY 
-    content_count DESC	
+    CONTENT_COUNT DESC	
 	LIMIT 5; 
 	
 --Identify the most common content rating in the dataset.
@@ -36,7 +38,7 @@ LIMIT 1;
 SELECT *
 FROM 
 	(SELECT TITLE, CAST(RIGHT(DATE_ADDED, 4) AS INT) AS YEAR_ADDED 
-	 FROM NETFLIX_)
+	FROM NETFLIX_)
 WHERE YEAR_ADDED=2021; 
 
 --Determine the average number of seasons for TV shows on Netflix.
@@ -47,9 +49,9 @@ WHERE UPPER(CONTENT_TYPE) = 'TV SHOW';
 --Find the top 3 directors with the most content on Netflix.
 WITH DIRECTOR_OCCURRENCES AS (
     SELECT 
-        TRIM(unnest(string_to_array(DIRECTOR, ','))) AS DIRECTOR 
+        TRIM(UNNEST(STRING_TO_ARRAY(DIRECTOR, ','))) AS DIRECTOR 
     FROM 
-        netflix_
+        NETFLIX_
     WHERE 
         DIRECTOR IS NOT NULL
 )
