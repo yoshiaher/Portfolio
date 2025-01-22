@@ -1,0 +1,24 @@
+The Health Outcomes around Pregnancy and Exposure to HIV/Antiretrovirals (HOPE) study is a prospective observational cohort study designed to investigate physical and mental health outcomes of young 
+women living with HIV as they age, including HIV disease course, engagement in care, reproductive health and choices and cardiometabolic health. Upon enrollment, women are stratified into the following
+buckets: 1=Nulliparous and nonpregnant, 2=pregnant, 3=recently delivered, 4=within 1 yr postpartum, 5=parous and non-pregnant. Depending on the stratification, there is different data that is collected 
+during the study period for which the women are followed. The data is collected via specially designed forms called CRFs. The task for this project was to derive a cutoff date for each participant that would represent the earliest timepoint that we could retrieve viral load and CD4 data from other studies that the HOPE 
+participants had been co-enrolled in. The cutoff date derivation was dependent on the stratificaiton of the participant. 
+
+For individuals classified as nulliparous and non-pregnant or parous and non-pregnant, the cutoff date is calculated as one year before the entry visit date (entryvisdt – 1 year). Since there is no pregnancy involvement, the cutoff is based solely on the entry visit date, and no last menstrual 
+period (LMP) date is required. 
+  
+For those in the pregnant group, the cutoff date is determined by subtracting six months from the LMP date (lmpdt – 6 months). The LMP is primarily obtained from the EVW0380 
+dataset. However, if the LMPDT is missing, it is estimated using gestational weeks from the anstab dataset by calculating lmpdt = randdt – gestational weeks, where the randomization date (randdt) is used instead 
+of the entry visit date to align with the enrollment period.
+
+Participants classified as recently delivered have their cutoff date calculated as six months before the LMP date (lmpdt – 6 months). In this case, the LMPDT is derived by subtracting the gestational age from 
+the most recent pregnancy date (pregdt), which is obtained from the EVW0379, QLW0360, or anstab datasets using the formula lmpdt = pregdt – gestational age.
+
+For those in the within 1 year postpartum group, the cutoff date is also calculated as six months before the LMP date (lmpdt – 6 months). Similar to the recently delivered group, the LMPDT is determined by 
+subtracting the gestational age from the most recent pregnancy date (pregdt). If gestational age data is missing in EVW0379, the pregnancy length is approximated using data from QLW0360. If the available data 
+indicates “37 weeks or more,” a default of 40 weeks is assumed. If no such data is available, a default of 40 weeks is used in the calculation, resulting in lmpdt = pregdt – 40 weeks. The pregnancy date (pregdt)
+is sourced from EVW0379, QLW0360, or anstab.
+
+Any calculation that uses entryvisitdt, if it is unaviable, then the randdt is used. Additionally, when choosing which pregdt to use in the relevant calculations, there is a hierarchy that goes as follows: use 
+the pregdt from EVW0379, if missing it's then QLW0360, if its missing, then Anstab. 
+
