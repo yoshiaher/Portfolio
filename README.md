@@ -4,8 +4,7 @@ Hi, I’m Yashodhan (nickname: Yoshi), and welcome to my repository! Here, you'l
 
 In this portfolio, I have included a variety of projects that showcase my data analytics and programming skills. In addition to my technical skills, I also pride myself on my critical thinking and problem-solving abilities. I am able to approach data analysis with a strategic mindset, and to identify key issues and opportunities in the data.
 
-In my free time, I enjoy exploring new data analysis tools and techniques, and I am always looking for opportunities to expand my knowledge and skills. Away from work I enjoy reading economic and tech related articles as well as books in 
-the genre of fantasy and thriller. 
+In my free time, I enjoy exploring new data analysis tools and techniques, and I am always looking for opportunities to expand my knowledge and skills. Away from work I enjoy watching and playing sports, movies, and reading economic and tech related articles as well as books in the genre of fantasy and thriller. 
 
 I am confident that my data analytics skills and experience make me an ideal candidate for any data analyst role. I hope you find my portfolio to be informative and engaging, and I welcome any opportunity to discuss my qualifications further with you.
 
@@ -15,4 +14,4 @@ Thank you for your time, I look forward to hearing from you soon.
 
 - [R Projects](R/) - Collection of R scripts and analyses.
 - [SQL Projects](SQL/) - SQL queries and data exploration projects.
-- [Tableau Dashboards](Tableau/) - Interactive dashboards and visualizations.
+- [Tableau Dashboards](Tableau/NFL_Dashboard) - Interactive dashboards and visualizations.
