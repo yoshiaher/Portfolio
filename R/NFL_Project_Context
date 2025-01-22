@@ -1,32 +1,29 @@
-With the NFL 2025 NFL playoffs right around the corner, NFL enthusiasts (myself included) are flocking to their favorite websites to see how the QBs heading into the playoffs 
-performed this season. Most fans looking to get a sense of how good each quarterback is will refer to ESPN or NFL.com and look at their basic statistics. Although these 
-measures are a good starting point, they have many limitations.
+The goal of this project was to create a single source of reporting that would convey far richer insights about the regular season performance of QBs headed to the playoffs 
+than anything that could be found via a simple Google search. The nflverse package in R has datasets stored in a variety of structures such as one record per play, one record 
+per week, one record per player, etc., and this flexbility enabled me to generate unique insights. The specific objectives in this project were as follows:
 
-One limitation is that these measures of performance are far more meaningful when looked at in conjunction with other critical context. For example, if Sam Darnold threw 
-36 touchdowns and Baker Mayfield threw 44 touchdowns, at first glance it wouldappear that Baker had the more impressive season according to this metric. However, if you add 
-context about each player's offensive line and find that Sam Darnold's offensive line was ranked far below Baker's, then you would realize there's a strong argument that Sam 
-in fact had a more impressive season despite having less touchdowns. 
+Aggregate Basic Stats such as Total Touchdowns, Interceptions, etc., and derive metrics to contextualize these statistics: Offensive Line Rank, Strength of Schedule, Defensive
+Rank, Receiving Core Rank
+        -Basic counting stats like touchdowns and interceptions provide a surface-level view of a quarterback's performance, but they don't tell the whole story. Contextual 
+         metrics such as offensive line rank and strength of schedule help assess whether a QB's performance was aided or hindered by external factors. For example, a high 
+         interception count might be less concerning if the QB faced a top-tier schedule, while a high touchdown total could be inflated by weak competition.
 
-Another limitation is that many of these statistics reflect a single time point which doesn't tell you the whole story. If Sam Darnold and Bakermayfield both finished with 20 
-interceptions but Baker Mayfield had no interceptions in the last 5 weeks and Sam Darnold had 10 in the last five weeks, then the manner in which both QBs got to 20 interceptions
-paints two different stories. This would not be discernible unless you were able to measure this metric over time. 
+Plot Mean EPA over time and who the opponent that week was
+        -Expected Points Added (EPA) is a widely used advanced metric that measures a player's contribution to scoring relative to the expected outcome of a given situation. 
+         Tracking EPA trends over the season and linking them to specific opponents helps identify patterns in performance, such as whether a QB consistently excels against 
+         weaker defenses or struggles against playoff-caliber opponents. This provides insight into consistency and adaptability.
 
-Lastly, many of these statistics are a high level representation of a QB's performance, but many strengths/weaknesses of a player can matereailize when looking at metrics with 
-a higher degree of granluarity. For example, many of these websites will provide third down conversion rates which is a good baseline measure of quarterback play in critical 
-moments. However, these metrics don't detail what the distance to go was which can drastically alter how you view a player. For example, if Sam Darnold and Baker Mayfield's 3rd 
-down conversaion rates were 40% and 35% respectively, you might be tempted to say Sam is better at third down conversions. However, if you could drill down into that statistic
-further and see that Sam is really good when its three or fewer yards but his success drops significantly beyond that while Baker maintains aroudn the same rate of conversion 
-at different distances, despite having an overall lower conversdion rate, the argument can be made that Baker Mayfield is better on third downs. 
+Plot third down conversion rates at different distances
+        -Third down performance is a crucial indicator of a quarterback's efficiency in high-pressure situations. Breaking down conversion rates by distance (e.g., short, 
+         medium, long) helps evaluate a QB's ability to sustain drives and make clutch plays. 
 
-The goal of this project was to create a single source of reporting that would convey far richer insights about the regular season performance of QBs headed to the playoffs than
-anything that could be found via a simple Google search. The nflverse package in R has datasets stored in a variety of structures such as one record per play, one record per week, 
-one record per player, etc. that allowed me to work around all of the limitations described above. The specific objectives in this project were as follow: 
+Measure completion percentage when pressured
+        -A quarterback's ability to maintain accuracy under pressure is a key determinant of their success, especially in playoff scenarios where defenses are more aggressive.
+         By analyzing completion rates under pressure, we can assess how well a QB handles defensive pressure which is crucial for evaluating resilience and composure in tough
+         situations.
 
-        1. Aggregate Basic Stats such as Total Tocuhdowns, Interceptions, etc. and derive metrics to contexualize these statistics: Offensive Line Rank, Strength of Schedule, 
-           Defensive Rank, Receiving Core Rank
-        2. Plot Mean EPA over time and who the opponent that week was
-        3. Plot third down conversion rates at different distances
-        4. Measure completion percentage when pressured. 
+For the purpose of this analysis, I thought these objectives were very thorough. They ensure that both basic and advanced metrics are used, both longitudinal and cross-sectional 
+data are used, and a variety of situations are covered such as QB play in clutch moments (third down conversion) or less than perfect conditions (completion percetnage unde pressure). 
 
-For the purpose of this analysis, I thought these objevtives were very thorough. They ensure that both basic and advanced metrics are used, both logitudinak and cross-sectional 
-data are used, and a variety of situations are covered such as clutch moments (third down conversion) or less than perfect conditions (completion percetnage unde pressure). 
+Please go to the NFL.R file to see how the data was programmed in R and go to https://yoshiaher.github.io/Data_Portfolio/Tableau/NFL.html to see how these insights were visualized in 
+Tableau. 
