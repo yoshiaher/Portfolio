@@ -2,7 +2,7 @@
   patid and pregdt and the dataset had 4 observations, 2 obs where patid=1 and 2 obs where patid = 2 then all the dates related
   to a patid are compuiled onto 1 line and if the last.patid statement is used it keeps the observation that has all the 
   pregdts relevant to that patid which makes comparison of dates possible. You will see this macro many times and it works
-  the same way every time
+  the same way every time 
 
   Original Data   What the macro does to the orig data  Final data when last.var is used
 
