@@ -1,5 +1,3 @@
-OBJECTIVE: 
-
 /*The mkvars macro essentially works like a transpose where if you had a dataset with 2 variables
   patid and pregdt and the dataset had 4 observations, 2 obs where patid=1 and 2 obs where patid = 2 then all the dates related
   to a patid are compuiled onto 1 line and if the last.patid statement is used it keeps the observation that has all the 
