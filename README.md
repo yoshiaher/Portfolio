@@ -4,7 +4,7 @@ Hi, I’m Yashodhan (nickname: Yoshi), and welcome to my repository! Here, you'l
 
 Currently, I work as a Statistical Programmer for the Center of Biostatistics in Aids Research where I specifically support PHACS. The Pediatric HIV/AIDS Cohort Study (PHACS) network conducts multiple longitudinal cohort studies investigating the long-term effects of HIV and antiretroviral (ARV) medications in children and young adults who were born with HIV or born exposed to HIV. These studies follow newborns, young children, adolescents, and young adults.
 
-In this portfolio, I have included a variety of projects that showcase my data analytics and programming skills. In addition to my technical skills, I also pride myself on my critical thinking and problem-solving abilities. I am able to approach data analysis with a strategic mindset, and to identify key issues and opportunities in the data.
+In this portfolio, I have included a variety of projects that showcase my data analytics and programming skills. Beyond my technical skills, I am a strong analytical thinker with excellent problem-solving skills. I approach data analysis strategically, identifying key issues and opportunities. 
 
 In my free time, I enjoy exploring new data analysis tools and techniques, and I am always looking for opportunities to expand my knowledge and skills. Away from work I enjoy watching and playing sports, movies, and reading economic and tech related articles as well as books in the genre of fantasy and thriller. 
 
