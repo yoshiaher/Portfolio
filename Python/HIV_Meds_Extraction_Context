@@ -1,0 +1,7 @@
+At the Center of Biostatistics and Aids Research at Harvard University, I work on a variety of HIV/Aids related health studies. A key aspect of health studies involving participants with HIV/AIDS is tracking their use of 
+antiretroviral (ARV) medications. Over the past three decades, many ARV medications have been approved by the FDA, with even more currently in the approval pipeline. Historically, a SAS tool was developed to clean and 
+standardize medication treatment data by aligning drug codes with drug names, identifying inconsistencies, and creating two cleaned datasets for analysis. While the FDA-approved medication list was updated manually, 
+these updates ceased several years ago. As a result, researchers collecting medication data for participants often encountered new drugs not included in the original tool. This led to incomplete regimen data in the final 
+datasets, delaying study deliverables.
+
+Goal: Automate the extraction of the most up-to-date FDA-approved ARV medications from the https://hivinfo.nih.gov/understanding-hiv/fact-sheets/fda-approved-hiv-medicines website. 
