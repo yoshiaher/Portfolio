@@ -25,5 +25,5 @@ Measure completion percentage when pressured
 For the purpose of this analysis, I thought these objectives were very thorough. They ensure that both basic and advanced metrics are used, both longitudinal and cross-sectional 
 data are used, and a variety of situations are covered such as QB play in clutch moments (third down conversion) or less than perfect conditions (completion percetnage unde pressure). 
 
-Please go to the NFL.R file to see how the data was programmed in R and go to https://yoshiaher.github.io/Data_Portfolio/Tableau/NFL.html to see how these insights were visualized in 
+Please go to the NFL.R file to see how the data was programmed in R and go to https://yoshiaher.github.io/Portfolio/Tableau/NFL.html to see how these insights were visualized in 
 Tableau. 
