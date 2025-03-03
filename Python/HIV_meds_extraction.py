@@ -4,8 +4,7 @@ from bs4 import BeautifulSoup  # Library for parsing HTML and web scraping
 import re  # Library for working with regular expressions
 
 
-# Step 1: Fetch the web page
-# URL of the page containing the FDA-approved HIV medicines
+# Fetch the URL of the page containing the FDA-approved HIV medicines
 url = "https://hivinfo.nih.gov/understanding-hiv/fact-sheets/fda-approved-hiv-medicines"
 
 # Send an HTTP GET request to fetch the HTML content of the web page
@@ -13,14 +12,14 @@ response = requests.get(url)
 
 # Check if the request was successful (HTTP status code 200 means success)
 if response.status_code == 200:
-    # Step 2: Parse the HTML content of the page
+    # Parse the HTML content of the page
     soup = BeautifulSoup(response.content, "html.parser")  # Parse the HTML using BeautifulSoup
     
     # Locate the table on the page
     table = soup.find("table")
     
     if table:
-        # Step 3: Extract the table's content into a pandas DataFrame
+        # Extract the table's content into a pandas DataFrame
         df = pd.read_html(str(table))[0]
     else:
         print("No table found on the web page.")  
@@ -37,23 +36,11 @@ df = df.reset_index(drop=True)
 df = df.iloc[1:]
 
 # Rename the columns for clarity and consistency:
-# The columns are renamed to meaningful names that describe the data
 df.columns = ['Drug Class', 'Generic Name', 'Brand Name', 'FDA Approval Date']
 
 # Function to extract acronyms and remove parentheses from the text
 def extract_acronyms(text):
-    """
-    This function extracts acronyms (text inside parentheses) and removes parentheses 
-    from the original text.
 
-    Parameters:
-    - text (str): The input string to process.
-
-    Returns:
-    - tuple: (acronyms, text_without_parentheses)
-        - acronyms: Comma-separated acronyms found in the text.
-        - text_without_parentheses: The original text without the parentheses.
-    """
     # Find all text inside parentheses and join it with a comma
     acronyms = re.findall(r'\(([^)]+)\)', text)
     
